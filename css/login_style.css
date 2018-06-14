@@ -1,0 +1,85 @@
+html {
+  box-sizing: border-box;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: initial black;
+}
+input[type="radio"] {
+  position: fixed;
+  left: -100px;
+}
+input:not([type="radio"]) {
+  appearance: none;
+  display: none;
+  transition: 300ms ease;
+  outline: 0;
+}
+[id="sign-in"]:checked ~ div.form-group input.sign-in,
+[id="sign-up"]:checked ~ div.form-group input.sign-up,
+[id="reset"]:checked ~ div.form-group input.reset {
+  max-height: 40px;
+  padding: 10px;
+  margin: 10px 0;
+  opacity: 1;
+}
+.form-group input {
+  outline: none;
+  display: block;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  transition: 0.3s ease;
+}
+
+[id="sign-in"]:checked ~ button:before {
+  content: 'Sign In';
+}
+[id="sign-up"]:checked ~ button:before {
+  content: 'Sign Up';
+}
+[id="reset"]:checked ~ button:before {
+  content: 'Reset password';
+}
+label {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  color: #000000;
+  transition: 300ms ease;
+  width: calc(100% / 3 - 4px);
+}
+label:after {
+  content: '';
+  border: 10px;
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 10px);
+  transition: inherit;
+}
+[id="sign-in"]:checked ~ [for="sign-in"],
+[id="sign-up"]:checked ~ [for="sign-up"],
+[id="reset"]:checked ~ [for="reset"] {
+  color: #ccc;
+}
+[id="sign-in"]:checked ~ [for="sign-in"]:after,
+[id="sign-up"]:checked ~ [for="sign-up"]:after,
+[id="reset"]:checked ~ [for="reset"]:after {
+  border-bottom-color: #ccc;
+}
+
+body {
+  font-size: 16px;
+
+}
