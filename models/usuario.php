@@ -8,5 +8,12 @@ class Usuario extends DB{
     $r = $stm->fetch();
     return json_encode($r);
   }
+
+  public function listar(){
+    $sql = "SELECT * from usuario";
+    $stm = DB::prepare($sql);
+    $stm->execute();
+    return $stm->fetchAll();
+  }
 }
  ?>

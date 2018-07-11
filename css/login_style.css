@@ -2,19 +2,37 @@ html {
   box-sizing: border-box;
 }
 
-* {
+{
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: initial black;
 }
 input[type="radio"] {
   position: fixed;
   left: -100px;
-}
+}/*
 input:not([type="radio"]) {
   appearance: none;
-  display: none;
+  background-color: #ccc;
+  display: block;
   transition: 300ms ease;
+  border-radius: 7px;
+  border: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0 10px;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 16px;
+  text-align: center;
   outline: 0;
+}*/
+
+.sumir {
+  display: none;
+}
+
+.aparecer {
+  display: block;
 }
 [id="sign-in"]:checked ~ div.form-group input.sign-in,
 [id="sign-up"]:checked ~ div.form-group input.sign-up,
@@ -59,6 +77,7 @@ label {
   color: #000000;
   transition: 300ms ease;
   width: calc(100% / 3 - 4px);
+  font-size: 16px;
 }
 label:after {
   content: '';
@@ -77,9 +96,4 @@ label:after {
 [id="sign-up"]:checked ~ [for="sign-up"]:after,
 [id="reset"]:checked ~ [for="reset"]:after {
   border-bottom-color: #ccc;
-}
-
-body {
-  font-size: 16px;
-
 }

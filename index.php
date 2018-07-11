@@ -23,7 +23,10 @@
 
   <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
   <link href="favicon.ico" rel="shortcut icon">
-
+  <script
+  src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
+  integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
+  crossorigin="anonymous"></script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
 
@@ -46,6 +49,8 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
   <script type="text/javascript">
+
+
     function login(form){
       //alert(form.cpf.value+" - "+form.password.value);
       var cpf = form.cpf.value;
@@ -54,6 +59,20 @@
       $.post("actions/action_usuario.php",{
         op:1,
         cpf:cpf,
+        senha:senha
+      },function(data){
+        alert(data);
+      });
+      return false;
+    }
+    function login(form){
+      alert(form.numoab.value+" - "+form.password.value);
+      var numoab = form.numoab.value;
+      var senha = form.password.value;
+
+      $.post("actions/action_advogado.php",{
+        op:1,
+        num_oab:num_oab,
         senha:senha
       },function(data){
         alert(data);
@@ -80,7 +99,7 @@
         <h2><span class="rotating"> Transparência é o nosso princípio</span></h2>
         <div class="actions">
           <a href="#services" class="btn-services">Serviços</a>
-          <a href="#mobile-nav" class="btn-get-started">Processos</a>
+          <a href="#" data-toggle="modal" data-target="#modal-advogado" class="btn-get-started">advogado</a>
 
         </div>
       </div>
@@ -106,7 +125,7 @@
           <li><a href="#services"><b>Serviços</b></a></li>
           <li><a href="#portfolio"><b>Parceiros</b></a></li>
         <!--  <li><a href="#testimonials"><b>Testemunho</b></a></li>-->
-          <li><a href="#team"><b>Time</b></a></li>
+          <li><a href="#team"><b>Equipe</b></a></li>
           <li class="menu-has-children"><a href=""><b>Consultar Processos</b></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -243,11 +262,11 @@
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-8">
-          <h3 class="subscribe-title">Subscribe For Updates</h3>
-          <p class="subscribe-text">Join our 1000+ subscribers and get access to the latest tools, freebies, product announcements and much more!</p>
+          <h3 class="subscribe-title">Entre em contato para saber mais</h3>
+          <p class="subscribe-text">Clientes precisam estar cadastrados para poder consultar os seus processos.</p>
         </div>
         <div class="col-md-4 subscribe-btn-container">
-          <a class="subscribe-btn" href="#">Subscribe Now</a>
+          <a class="subscribe-btn" href="#">Contate-nos</a>
         </div>
       </div>
     </div>
@@ -438,7 +457,7 @@
           <div class="info">
             <div>
               <i class="fa fa-map-marker"></i>
-              <p>A108 Adam Street<br>New York, NY 535022</p>
+              <p> Rua Est. Valdir<br>New York, NY 535022</p>
             </div>
 
             <div>
@@ -460,22 +479,22 @@
             <div id="errormessage"></div>
             <form action="" method="post" role="form" class="contactForm">
               <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <input type="email" class="form-control" name="email" id="email" placeholder="Seu Email" data-rule="email" data-msg="Please enter a valid email" />
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensagem"></textarea>
                 <div class="validation"></div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit">Enviar</button></div>
             </form>
           </div>
         </div>
@@ -492,7 +511,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="copyright">
-            &copy; Copyright <strong>Imperial Theme</strong>. All Rights Reserved
+            &copy; Copyright<strong> Processos & Processo</strong>
           </div>
           <div class="credits">
             <!--
@@ -527,7 +546,7 @@
   <script src="contactform/contactform.js"></script>
 
   <div class="container">
-    <!-- Modal -->
+    <!-- Modal de login -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
 
@@ -537,49 +556,39 @@
 
 
             <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Área do Clientes</b></h4>
           </div>
+
           <div class="modal-body">
 
             <div class="form-content">
 
       <form method="post" onsubmit="return login(this)">
 
-        <input type="radio" name="rg" id="sign-in"/>
-        <input type="radio" name="rg" id="sign-up"/>
-        <input type="radio" name="rg" id="reset" />
-
-        <label for="sign-in">Login</label>
-        <label for="sign-up">Cadastre-se</label>
-        <label for="reset"> Mudar senha</label>
-
-        <div class="form-group sign-up sign-in">
-          <label for="username"><b>CPF</b></label>
-          <input type="text" class="sign-up sign-in reset" id="cpf" name="cpf" required="required"/>
+        <div class="col-md-6">
+          <div class="form-group sign-in">
+            <label for="username"><b>CPF</b></label>
+            <input type="text" class="sign-in" id="cpf" name="cpf" required="required"/>
+          </div>
         </div>
 
-        <div class="form-group sign-up reset">
-          <label for="username"><b>Email</b></label>
-          <input type="text" class=" sign-up reset" id="email2" name="email2" required="required"/>
+        <div class="col-md-6">
+          <div class="form-group sign-in">
+            <label for="password"><b>Senha</b></label>
+            <input type="password" class="sign-in" id="password" name="password" required="required"/>
+          </div>
         </div>
+        <div class="col-md-8">
 
-        <div class="form-group sign-up sign-in">
-         <label for="password"><b>Senha</b></label>
-         <input type="password" class="sign-up sign-in" id="password" name="password" required="required"/>
-       </div>
-
-       <div class="form-group sign-up">
-        <label for="password"><b>Confirmar Senha</b></label>
-        <input type="password" class="sign-up " id="password2" name="password2" required="required"/>
-      </div>
-
-        <div class="form-group">
-          <button id="bt-login" type="submit">Log In</button>
         </div>
-
       </form>
     </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            <div class="col-md-4">
+              <div class="form-group">
+                <button id="bt-login" type="submit">Log In</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -587,6 +596,171 @@
     </div>
 
   </div>
+
+  <!--Fim do modal de login-->
+
+<!--Modal do advogado-->
+  <div class="modal fade" id="modal-advogado" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Área do Advogado</b></h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-content">
+
+    <form method="post" onsubmit="return cadastrarAdvogado(this)">
+
+              <input type="radio" name="rg"  style="display:none"/>
+              <input type="radio" name="rg" style="display:none"/>
+              <input type="radio" name="rg"  style="display:none"/>
+
+              <label for="sign-in" id="sign-in-adv" onclick="loginAdv()">Login</label>
+              <label for="sign-up" id="sign-up-adv" onclick="cadastroAdv()">Cadastre-se</label>
+              <label for="reset" id="reset-adv" onclick="resetAdv()"> Mudar senha</label>
+              <div class="row">
+                <div class="col-md-12" id="div-nome">
+                  <div class="form-group">
+                    <input type="text" class="sign-up sign-in reset" id="nome-adv" placeholder="NOME" name="nome" required="required"/>
+                  </div>
+                </div>
+                <div class="col-md-6" id="div-cpf">
+                  <div class="form-group">
+                    <input type="text" class="sign-up sign-in reset" id="cpf-adv"  name="cpf" placeholder="CPF" required="required"/>
+                  </div>
+                </div>
+                <div class="col-md-6" id="div-rg">
+                  <div class="form-group">
+                    <input type="text" class="sign-up sign-in reset" id="rg-adv" placeholder="RG" name="rg" required="required"/>
+                  </div>
+                </div>
+
+                <div class="col-md-6" id="div-numoab">
+                  <div class="form-group">
+                    <input type="text" class="sign-up sign-in reset" id="numoab" name="numoab" placeholder="NUM. OAB" required="required"/>
+                  </div>
+                </div>
+                <div class="col-md-6" id="div-nacionalidade">
+                  <div class="form-group">
+                    <input type="text" class="sign-up sign-in reset" id="nacionalidade" placeholder="NACIONALIDADE" name="nacionalidade" required="required"/>
+                  </div>
+                </div>
+
+                <div class="col-md-6" id="div-profissao">
+                  <div class="form-group">
+                    <input type="text" class="sign-up sign-in reset" id="profissao" name="profissao" placeholder="PROFISSÃO" required="required"/>
+                  </div>
+                </div>
+                <div class="col-md-6" id="div-estadocivil">
+                  <div class="form-group">
+                    <select class="form-control" name="estadocivil">
+                      <option value="1">Solteiro</option>
+                      <option value="2">Casado</option>
+                      <option value="3">Divorciado</option>
+                      <option value="4">Viuvo</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-12" id="div-email">
+                  <div class="form-group">
+                    <input type="email" class="" id="email-adv" placeholder="EMAIL" name="email-adv" required="required"/>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6" id="div-senha">
+                  <div class="form-group">
+                    <input type="password" id="senha" name="senha" placeholder="SENHA" required="required"/>
+                  </div>
+                </div>
+
+                <div class="col-md-6" id="div-confirmarsenha">
+                  <div class="form-group">
+                    <input type="password" id="confirmarsenha" name="confirmarsenha" placeholder="CONFIRMAR SENHA" required="required"/>
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <button id="bt-login-adv" type="submit">Log In</button>
+                  </div>
+                </div>
+
+              </div>
+
+    </form>
+  </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!--Fim do modal de login-->
+
+<script type="text/javascript">
+$(document).ready(function($){
+  document.getElementById("div-nome").style.display = "none";
+  document.getElementById("div-cpf").style.display = "none";
+  document.getElementById("div-rg").style.display = "none";
+
+  document.getElementById("div-nacionalidade").style.display = "none";
+  document.getElementById("div-profissao").style.display = "none";
+  document.getElementById("div-estadocivil").style.display = "none";
+  document.getElementById("div-email").style.display = "none";
+  document.getElementById("div-confirmarsenha").style.display = "none";
+});
+function loginAdv() {
+  document.getElementById("div-nome").style.display = "none";
+  document.getElementById("div-cpf").style.display = "none";
+  document.getElementById("div-rg").style.display = "none";
+
+  document.getElementById("div-numoab").style.display = "block";
+  document.getElementById("div-senha").style.display = "block";
+  document.getElementById("div-nacionalidade").style.display = "none";
+  document.getElementById("div-profissao").style.display = "none";
+  document.getElementById("div-estadocivil").style.display = "none";
+  document.getElementById("div-email").style.display = "none";
+  document.getElementById("div-confirmarsenha").style.display = "none";
+
+}
+
+function cadastroAdv() {
+  document.getElementById("div-nome").style.display = "block";
+  document.getElementById("div-cpf").style.display = "block";
+  document.getElementById("div-rg").style.display = "block";
+  document.getElementById("div-numoab").style.display = "block";
+  document.getElementById("div-nacionalidade").style.display = "block";
+  document.getElementById("div-profissao").style.display = "block";
+  document.getElementById("div-estadocivil").style.display = "block";
+  document.getElementById("div-email").style.display = "block";
+  document.getElementById("div-senha").style.display = "block";
+  document.getElementById("div-confirmarsenha").style.display = "block";
+}
+
+function resetAdv() {
+  document.getElementById("div-nome").style.display = "none";
+  document.getElementById("div-cpf").style.display = "none";
+  document.getElementById("div-rg").style.display = "none";
+  document.getElementById("div-numoab").style.display = "none";
+  document.getElementById("div-senha").style.display = "none";
+  document.getElementById("div-nacionalidade").style.display = "none";
+  document.getElementById("div-profissao").style.display = "none";
+  document.getElementById("div-estadocivil").style.display = "none";
+  document.getElementById("div-email").style.display = "block";
+  document.getElementById("div-confirmarsenha").style.display = "none";
+}
+</script>
 </body>
 
 </html>

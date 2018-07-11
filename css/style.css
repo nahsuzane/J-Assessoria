@@ -993,3 +993,34 @@ body {
   opacity: 1;
   visibility: visible;
 }
+
+////////////////////
+
+#agenda {
+  background: #fff;
+  padding: 80px 0;
+}
+
+#about .about-container {
+  background: url(../img/about-img.jpg) left top no-repeat;
+}
+
+
+#agenda .agenda-content {
+  background: #fff;
+}
+
+#agenda .agenda-title {
+  color: #333;
+  font-weight: 700;
+  font-size: 28px;
+
+}
+
+#agenda .agenda-text {
+  line-height: 26px;
+}
+
+#agenda .agenda-text:last-child {
+  margin-bottom: 0;
+}
